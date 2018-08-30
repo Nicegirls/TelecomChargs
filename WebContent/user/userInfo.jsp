@@ -40,6 +40,7 @@
                 <li><a href="../service/service_list.html" class="service_off"></a></li>
                 <li><a href="../bill/bill_list.html" class="bill_off"></a></li>
                 <li><a href="../report/report_list.html" class="report_off"></a></li>
+                
                 <li><a href="../user/userInfo.jsp" class="information_on"></a></li>
                 <li><a href="../user/userpwd.jsp" class="password_off"></a></li>
             </ul>            
