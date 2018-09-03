@@ -1,3 +1,4 @@
+<%@page import="cn.gaopengtao.entiy.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,8 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>管理界面</title>
-        <link type="text/css" rel="stylesheet" media="all" href="styles/global.css" />
-        <link type="text/css" rel="stylesheet" media="all" href="styles/global_color.css" /> 
+    <link type="text/css" rel="stylesheet" media="all" href="styles/global.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="styles/global_color.css" /> 
+    <script type="text/javascript">
+    	function checkPower() { 
+    		alter("进入函数");
+			if("高鹏涛".equals($session.user.user_name)){
+				location.href="nopower.jsp";
+			}
+			else{
+				location.href="user/userInfo.jsp";
+			}
+		}
+    </script>
 </head>
 <body class="index">
        <!--导航区域开始-->
