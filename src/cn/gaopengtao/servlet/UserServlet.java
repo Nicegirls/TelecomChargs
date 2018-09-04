@@ -31,10 +31,16 @@ public class UserServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
-		System.out.println("**************");
-		changeInfo(request,response);
+		String value = request.getParameter("userInfo");
+		switch(value){
+			case "changeInfo":
+				changeInfo(request,response);
+				break;
+			case "changePwd":
+				changePwd(request,response);
+				break;
+		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -71,8 +77,27 @@ public class UserServlet extends HttpServlet {
 		if(flag) {
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("falg", flag);
-			System.err.println(user.toString());
+			System.out.println(user.toString());
 			response.sendRedirect("user/userInfo.jsp");
+		}
+	}
+	
+	/**
+	 * 修改密码
+	 * @throws IOException 
+	 */
+	private void changePwd(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("进入修改密码方法");
+		String newpwd = request.getParameter("newpwd");
+		User user = (User)request.getSession().getAttribute("user");
+		request.getSession().removeAttribute("user");
+		user.setUser_psw(newpwd);
+		System.out.println(user.getUser_psw());
+		UserInfoService userInfoService = new UserInfoServiceImpl();
+		boolean update = userInfoService.updatepwd(user);
+		if(update) {
+			request.getSession().setAttribute("user", user);
+			response.sendRedirect("login.jsp");
 		}
 	}
 }

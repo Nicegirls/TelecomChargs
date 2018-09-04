@@ -58,12 +58,7 @@ public class Login extends HttpServlet {
 		String psw = request.getParameter("userpwd");
 		LoginService loginService = new LoginServiceImpl();
 		User user = loginService.CheckUserLoginService(account,psw);
-		try {
-			System.out.println(user.toString());
-		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		if(user!=null) {
 			request.getSession().setAttribute("user", user);
 //			request.setAttribute("user", user);

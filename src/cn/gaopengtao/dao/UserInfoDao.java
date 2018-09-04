@@ -9,4 +9,9 @@ public interface UserInfoDao {
 	 * @return
 	 */
 	public boolean updateInfo(User user);
+	/**
+	 * 修改密码
+	 * @return
+	 */
+	public boolean updatepwd(User user);
 }

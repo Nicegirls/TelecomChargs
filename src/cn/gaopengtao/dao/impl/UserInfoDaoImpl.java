@@ -19,5 +19,14 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		list.add(user.getUser_id());
 		return BaseDaoImpl.updateInfo(sql, list);
 	}
+	@Override
+	public boolean updatepwd(User user) {
+		// TODO Auto-generated method stub
+		String sql = "update user set user_psw = ? where user_id = ?";
+		list.clear();
+		list.add(user.getUser_psw());
+		list.add(user.getUser_id());
+		return BaseDaoImpl.updateInfo(sql, list);
+	}
 
 }

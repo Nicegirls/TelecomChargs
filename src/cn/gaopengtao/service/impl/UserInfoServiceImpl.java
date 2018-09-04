@@ -14,4 +14,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoDao.updateInfo(user);
 	}
 
+	@Override
+	public boolean updatepwd(User user) {
+		// TODO Auto-generated method stub
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		return userInfoDao.updatepwd(user);
+	}
+
 }

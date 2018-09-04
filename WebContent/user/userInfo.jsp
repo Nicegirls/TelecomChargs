@@ -22,6 +22,13 @@
             else
                 divResult.style.display = "none";
         }
+        function exit() {
+        	sessionStorage.removeItem("user");
+        	window.location.href="../login.jsp";
+		}
+        function notDo() {
+			windows.location.href="userInfo.jsp";
+		}
     </script>
 	<% User user = (User)session.getAttribute("user");%>
 	<%if(user==null){ 
@@ -32,7 +39,7 @@
         <!--Logo区域开始-->
         <div id="header">
             <img src="../images/logo.png" alt="logo" class="left"/>
-			${user.user_name }<a href="../login.jsp">[退出]</a>            
+			${user.user_name }<a onclick="exit()" style="cursor:pointer;">[退出]</a>            
         </div>
         <!--Logo区域结束-->
         <!--导航区域开始-->
@@ -83,9 +90,9 @@
                 <div class="input_info"><input type="text" readonly="readonly" disabled="true" class="readonly" value="${user.user_date }"/></div>
                 <div class="button_info clearfix">
                     <input type="submit" value="保存" class="btn_save" onclick="userInfo.submit()"/>
-                    <input type="submit" value="取消" class="btn_save" />
+                    <input type="button" value="取消" onclick="notDo()" class="btn_save" />
                 </div>
-                <input type="hidden" name="uid" value="${user.user_id}">
+                <input type="hidden" name="userInfo" value="changeInfo">
             </form>  
         </div>
         <!--主要区域结束-->
